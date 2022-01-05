@@ -1,0 +1,11 @@
+FROM evertonhideowork/aws-cli
+
+WORKDIR /setup
+
+COPY --chown=root:root ./aws/configuration /root/.aws/config
+COPY --chown=root:root ./aws/creds /root/.aws/credentials
+COPY --chown=root:root ./dynamo-table.json .
+COPY --chown=root:root ./create-resources.sh .
+
+RUN chmod +x create-resources.sh
+ENTRYPOINT [ "/setup/create-resources.sh" ]
