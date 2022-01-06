@@ -7,6 +7,7 @@ import org.apache.logging.log4j.util.Strings
 import java.net.URI
 import java.time.Instant
 
+
 @DynamoDBTable(tableName = Constants.TABLE_NAME)
 data class Movie (
     @DynamoDBHashKey(attributeName = "year")
