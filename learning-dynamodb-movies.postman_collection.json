@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "6018bb38-8124-42ec-ba64-7ef94857862e",
+		"name": "learning-dynamodb-movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": 1994,\r\n    \"title\": \"Pulp Fiction\",\r\n    \"info\": {\r\n        \"actors\": [\r\n            \"Brittany Murphy\",\r\n            \"Ron Livingston\",\r\n            \"Holly Hunter\"\r\n        ],\r\n        \"directors\": [\r\n            \"Nick Hurran\"\r\n        ],\r\n        \"rating\": 5.1,\r\n        \"plot\": \"A woman snoops through her boyfriend's palm pilot and reveals his former girlfriends, which causes her to question why they're still listed in his little black book.\",\r\n        \"genres\": [\r\n            \"Comedy\",\r\n            \"Romance\",\r\n            \"Drama\"\r\n        ],\r\n        \"releaseDate\": null,\r\n        \"imageUrl\": null,\r\n        \"rank\": 5000,\r\n        \"runningTimeSecs\": null\r\n    },\r\n    \"rating\": 9.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/1994/Pulp%20Fiction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994",
+						"Pulp%20Fiction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": 1994,\r\n    \"title\": \"Pulp Fiction\",\r\n    \"info\": {\r\n        \"actors\": [\r\n            \"Brittany Murphy\",\r\n            \"Ron Livingston\",\r\n            \"Holly Hunter\"\r\n        ],\r\n        \"directors\": [\r\n            \"Nick Hurran\"\r\n        ],\r\n        \"rating\": 5.1,\r\n        \"plot\": \"A woman snoops through her boyfriend's palm pilot and reveals his former girlfriends, which causes her to question why they're still listed in his little black book.\",\r\n        \"genres\": [\r\n            \"Comedy\",\r\n            \"Romance\",\r\n            \"Drama\"\r\n        ],\r\n        \"releaseDate\": null,\r\n        \"imageUrl\": null,\r\n        \"rank\": 5000,\r\n        \"runningTimeSecs\": null\r\n    },\r\n    \"rating\": 9.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/1994/Pulp%20Fiction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994",
+						"Pulp%20Fiction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/1994/Pulp%20Fiction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994",
+						"Pulp%20Fiction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List By Year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/1994",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List By Year Above Rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/1994?rating=4.6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "4.6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List By Year Above Rating Paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies/1994/paginated?rating=4.6&pageSize=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994",
+						"paginated"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "4.6"
+						},
+						{
+							"key": "pageSize",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List By Year Above Rating Paginated 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": {\r\n        \"s\": null,\r\n        \"n\": \"1994\",\r\n        \"b\": null,\r\n        \"m\": null,\r\n        \"l\": null,\r\n        \"ns\": null,\r\n        \"bs\": null,\r\n        \"ss\": null,\r\n        \"null\": null,\r\n        \"bool\": null\r\n    },\r\n    \"rating\": {\r\n        \"s\": null,\r\n        \"n\": \"7.2\",\r\n        \"b\": null,\r\n        \"m\": null,\r\n        \"l\": null,\r\n        \"ns\": null,\r\n        \"bs\": null,\r\n        \"ss\": null,\r\n        \"null\": null,\r\n        \"bool\": null\r\n    },\r\n    \"title\": {\r\n        \"s\": \"Dumb & Dumber\",\r\n        \"n\": null,\r\n        \"b\": null,\r\n        \"m\": null,\r\n        \"l\": null,\r\n        \"ns\": null,\r\n        \"bs\": null,\r\n        \"ss\": null,\r\n        \"null\": null,\r\n        \"bool\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movies/1994/paginated?rating=4.6&pageSize=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1994",
+						"paginated"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "4.6"
+						},
+						{
+							"key": "pageSize",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

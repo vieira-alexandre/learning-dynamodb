@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.8</version>
+		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.alexandrevieira</groupId>
@@ -15,7 +15,7 @@
 	<description>Project created to learn how to use dynamodb with AWS SDK</description>
 	<properties>
 		<java.version>11</java.version>
-		<kotlin.version>1.5.32</kotlin.version>
+		<kotlin.version>1.5.31</kotlin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -49,6 +49,16 @@
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib-jdk8</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-core</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.831</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -68,9 +78,21 @@
 					</args>
 					<compilerPlugins>
 						<plugin>spring</plugin>
+						<plugin>no-arg</plugin>
 					</compilerPlugins>
+					<pluginOptions>
+						<option>all-open:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable</option>
+						<option>no-arg:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable</option>
+						<option>all-open:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument</option>
+						<option>no-arg:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument</option>
+					</pluginOptions>
 				</configuration>
 				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-noarg</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
 					<dependency>
 						<groupId>org.jetbrains.kotlin</groupId>
 						<artifactId>kotlin-maven-allopen</artifactId>

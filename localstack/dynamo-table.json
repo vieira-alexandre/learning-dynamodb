@@ -1,0 +1,53 @@
+{
+  "TableName": "Movies",
+  "KeySchema": [
+    {
+      "AttributeName": "year",
+      "KeyType": "HASH"
+    },
+    {
+      "AttributeName": "title",
+      "KeyType": "RANGE"
+    }
+  ],
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "year",
+      "AttributeType": "N"
+    },
+    {
+      "AttributeName": "title",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "rating",
+      "AttributeType": "N"
+    }
+  ],
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "RatingIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "year",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "rating",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+      }
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  }
+}
