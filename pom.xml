@@ -78,9 +78,21 @@
 					</args>
 					<compilerPlugins>
 						<plugin>spring</plugin>
+						<plugin>no-arg</plugin>
 					</compilerPlugins>
+					<pluginOptions>
+						<option>all-open:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable</option>
+						<option>no-arg:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable</option>
+						<option>all-open:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument</option>
+						<option>no-arg:annotation=com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument</option>
+					</pluginOptions>
 				</configuration>
 				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-noarg</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
 					<dependency>
 						<groupId>org.jetbrains.kotlin</groupId>
 						<artifactId>kotlin-maven-allopen</artifactId>
