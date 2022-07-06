@@ -13,8 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.context.annotation.Bean
+import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.event.EventListener
 import java.io.File
 
 @Configuration
@@ -27,8 +28,8 @@ class DBInitializer(
     @Value("\${database.initialize.amount}")
     private val amount: Int = 0
 
-    @Bean
-    fun initialize() {
+    @EventListener(ApplicationReadyEvent::class)
+    fun doSomethingAfterStartup() {
         val table: Table = dynamoDB.getTable(tableName)
         val parser: JsonParser = JsonFactory().createParser(File("localstack/moviedata.json"))
         val rootNode: JsonNode = ObjectMapper().readTree(parser)
